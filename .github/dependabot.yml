@@ -1,0 +1,23 @@
+version: 2
+registries:
+  git-gitlab-com:
+    type: git
+    url: https://gitlab.com
+    username: kyronrz
+    password: "${{secrets.GIT_GITLAB_COM_PASSWORD}}"
+
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: MegaApiClient
+    versions:
+    - 1.8.2
+  - dependency-name: Newtonsoft.Json
+    versions:
+    - 12.0.3
+  registries:
+  - git-gitlab-com
